@@ -71,28 +71,7 @@
         </section>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch('realisations.json')
-                .then(response => response.json())
-                .then(data => {
-                    const realisationsContent = document.getElementById('realisations-content');
-                    data.forEach(realisation => {
-                        const realisationElement = document.createElement('div');
-                        realisationElement.classList.add('realisation-item');
-                        realisationElement.innerHTML = `
-                            <h3>${realisation.titre}</h3>
-                            <p><strong>Durée:</strong> ${realisation.duree}</p>
-                            <p><strong>Personnes impliquées:</strong> ${realisation.personnes}</p>
-                            <p><strong>Technologies:</strong> ${realisation.technologies.join(', ')}</p>
-                            <p><strong>Vidéo de présentation:</strong> <a href="${realisation.video}" target="_blank">Voir la vidéo</a></p>
-                        `;
-                        realisationsContent.appendChild(realisationElement);
-                    });
-                })
-                .catch(error => console.error('Erreur lors du chargement des réalisations:', error));
-        });
-    </script>
+    <script src="Scripts/script.js"></script>
 
 </body>
 </html>

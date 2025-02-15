@@ -10,3 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
     programmingIcon.style.animationPlayState = "running";
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    fetch('realisations.json')
+        .then(response => response.json())
+        .then(data => {
+            const realisationsContent = document.getElementById('realisations-content');
+            data.forEach(realisation => {
+                const realisationElement = document.createElement('div');
+                realisationElement.classList.add('realisation-item');
+                realisationElement.innerHTML = `
+                    <h3>${realisation.titre}</h3>
+                    <p><strong>Durée:</strong> ${realisation.duree}</p>
+                    <p><strong>Personnes impliquées:</strong> ${realisation.personnes}</p>
+                    <p><strong>Technologies:</strong> ${realisation.technologies.join(', ')}</p>
+                    <div class="video-container">
+                        <iframe width="560" height="315" src="${realisation.video}" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                `;
+                realisationsContent.appendChild(realisationElement);
+            });
+        })
+        .catch(error => console.error('Erreur lors du chargement des réalisations:', error));
+});
