@@ -22,8 +22,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 realisationElement.classList.add('realisation-item');
                 realisationElement.innerHTML = `
                     <h3>${realisation.titre}</h3>
-                    <p><strong>Durée:</strong> ${realisation.duree}</p>
-                    <p><strong>Personnes impliquées:</strong> ${realisation.personnes}</p>
+                    <p><strong>Duration:</strong> ${realisation.duree}</p>
+                    <p><strong>People involved:</strong> ${realisation.personnes}</p>
                     <p><strong>Technologies:</strong> ${realisation.technologies.join(', ')}</p>
                     <div class="video-container">
                         <iframe src="${realisation.video}" frameborder="0" allowfullscreen></iframe>
