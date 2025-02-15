@@ -253,9 +253,8 @@ nav {
     max-width: 1000px;
     margin: 50px auto;
     text-align: center;
-    clear: both; /* Empêche les superpositions */
+    clear: both;
 }
-
 
 #realisations-content {
     display: flex;
@@ -270,7 +269,7 @@ nav {
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
-    background-color:#CBA35C; 
+    background-color:#f5f0e1; 
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
@@ -283,7 +282,7 @@ nav {
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* Ratio 16:9 */
+    padding-bottom: 56.25%; 
     height: 0;
 }
 
