@@ -1,6 +1,6 @@
 body {
-    background-color: #ccaf9b;
-    color: #c6c3b3;
+    background-color: #f5f0e1;
+    color: #4a4a4a;
     font-family: Arial, sans-serif;
     margin: 0;
     height: 100vh;
@@ -10,7 +10,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #a06b39;
+    background-color: #e0d8c3;
     padding: 15px 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -28,7 +28,7 @@ nav {
 .nav-left {
     font-size: 22px;
     font-weight: bold;
-    color: #c6c3b3;
+    color: #4a4a4a;
     flex: 0 0 auto;
     padding-left: 1%;
 }
@@ -45,20 +45,20 @@ nav {
 
 .nav-center li a {
     text-decoration: none;
-    color: #c6c3b3;
+    color: #4a4a4a;
     font-size: 18px;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-center li a:hover {
-    color: #c6c3b3;
+    color: #7a7a7a;
 }
 
 .nav-right {
     display: flex;
     gap: 15px;
-    flex: 0 0 auto;
+    flex: 0 0 auto; /* Empêche les contacts de s'étendre */
     justify-content: flex-end;
     align-items: center;
     padding-right: 1%;
@@ -112,18 +112,41 @@ nav {
     align-items: center;
     width: 80%;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 15% auto;
     height: auto; 
+
+}
+
+.shimmer-text {
+    font-size: 10em; 
+    font-weight: bold;
+    color: transparent; 
+    background-image: url('../Images/forest.jpg'); 
+    background-size: 200%;
+    background-position: 0 50%;
+    background-clip: text; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-background 5s infinite alternate linear;
+}
+
+@keyframes animate-background {
+    0% {
+        background-position: 0% 50%; 
+    }
+    100% {
+        background-position: 100% 50%; 
+    }
 }
 
 .description {
     flex: 1;
     padding: 20px;
-    background-color: #a06b39;
+    background-color: #e0d8c3;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     text-align: left;
-    margin-bottom: 20px;
+    margin-bottom: 20px; /* Ajoute un espace entre les sections */
 }
 
 .description h2 {
@@ -141,17 +164,104 @@ nav {
     margin-top: 20px;
 }
 
+
 .contact {
     font-size: 0.9em;
 }
 
 .contact a {
     text-decoration: underline;
-    color: #c6c3b3;
+    color: inherit;
 }
 
-.contact a:hover {
-    color: #754E1A;
+.animation-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 250px;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0) scale(1);
+    }
+    to {
+        transform: translateY(100px) scale(1, 0.7);
+    }
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0.2, 0.3);
+    }
+    to {
+        transform: scale(1, 0.1);
+    }
+}
+
+.plant {
+    width: 100px;
+    height: 100px;
+    background-image: url('../Images/plant.png');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 0.5s infinite alternate cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.shadow {
+    width: 100px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(150, 150, 150, 1), rgba(150, 150, 150, 0));
+    position: absolute;
+    top: calc(50px + 100px + 50px - 1.5 * 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: grow 0.5s infinite alternate cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.programming-icon {
+    width: 120px;
+    height: 100px;
+    background-image: url('../Images/programming-icon.png');
+    background-size: cover;
+    position: relative;
+    animation: vibrate 0.5s infinite;
+}
+
+@keyframes vibrate {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+#realisations {
+    width: 80%;
+    max-width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+    clear: both; /* Empêche les superpositions */
+}
+
+
+#realisations-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
 }
 
 .realisation-item {
@@ -160,8 +270,7 @@ nav {
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
-    background-color: #873c1e;
-    color : #312921;
+    background-color: #e0d8c3; /* Même couleur que About Me */
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
@@ -170,3 +279,20 @@ nav {
     font-size: 22px;
     margin-bottom: 10px;
 }
+
+.video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* Ratio 16:9 */
+    height: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+}
+
