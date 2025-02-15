@@ -1,0 +1,23 @@
+[
+    {
+        "titre": "Projet 1",
+        "duree": "3 mois",
+        "personnes": 4,
+        "technologies": ["C++", "Unreal Engine"],
+        "video": "URL_DE_LA_VIDEO_1"
+    },
+    {
+        "titre": "Projet 2",
+        "duree": "2 mois",
+        "personnes": 2,
+        "technologies": ["C#", "Unity"],
+        "video": "URL_DE_LA_VIDEO_2"
+    },
+    {
+        "titre": "Projet 3",
+        "duree": "4 mois",
+        "personnes": 5,
+        "technologies": ["SFML", "OpenGL"],
+        "video": "URL_DE_LA_VIDEO_3"
+    }
+]

@@ -1,0 +1,248 @@
+body {
+    background-color: #f5f0e1;
+    color: #4a4a4a;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100vh;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #e0d8c3;
+    padding: 15px 0px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: auto;
+}
+
+.nav-left {
+    font-size: 22px;
+    font-weight: bold;
+    color: #4a4a4a;
+    flex: 0 0 auto;
+    padding-left: 1%;
+}
+
+.nav-center {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+    flex: 1; 
+    justify-content: center;
+}
+
+.nav-center li a {
+    text-decoration: none;
+    color: #4a4a4a;
+    font-size: 18px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-center li a:hover {
+    color: #7a7a7a;
+}
+
+.nav-right {
+    display: flex;
+    gap: 15px;
+    flex: 0 0 auto; /* Empêche les contacts de s'étendre */
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 1%;
+}
+
+.nav-right a {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right img {
+    width: 24px;
+    height: 24px;
+    transition: opacity 0.3s ease;
+}
+
+.nav-right img:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-center {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .nav-right {
+        margin-top: 10px;
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+.welcome-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px; 
+    margin-top: 5%;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 1000px;
+    margin: 0 auto;
+    height: calc(80vh); 
+}
+
+.shimmer-text {
+    font-size: 10em; 
+    font-weight: bold;
+    color: transparent; 
+    background-image: url('../Images/forest.jpg'); 
+    background-size: 200%;
+    background-position: 0 50%;
+    background-clip: text; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: animate-background 5s infinite alternate linear;
+}
+
+@keyframes animate-background {
+    0% {
+        background-position: 0% 50%; 
+    }
+    100% {
+        background-position: 100% 50%; 
+    }
+}
+
+.description {
+    flex: 1;
+    padding: 20px;
+    background-color: #e0d8c3;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    margin-bottom: 20px; /* Ajoute un espace entre les sections */
+}
+
+.description h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.description p {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.description h3 {
+    font-size: 22px;
+    margin-top: 20px;
+}
+
+
+.contact {
+    font-size: 0.9em;
+}
+
+.contact a {
+    text-decoration: underline;
+    color: inherit;
+}
+
+.animation-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 250px;
+}
+
+@keyframes bounce {
+    from {
+        transform: translateY(0) scale(1);
+    }
+    to {
+        transform: translateY(100px) scale(1, 0.7);
+    }
+}
+
+@keyframes grow {
+    from {
+        transform: scale(0.2, 0.3);
+    }
+    to {
+        transform: scale(1, 0.1);
+    }
+}
+
+.plant {
+    width: 100px;
+    height: 100px;
+    background-image: url('../Images/plant.png');
+    background-size: cover;
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 0.5s infinite alternate cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.shadow {
+    width: 100px;
+    height: 10px;
+    background: radial-gradient(circle, rgba(150, 150, 150, 1), rgba(150, 150, 150, 0));
+    position: absolute;
+    top: calc(50px + 100px + 50px - 1.5 * 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    animation: grow 0.5s infinite alternate cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+.programming-icon {
+    width: 120px;
+    height: 100px;
+    background-image: url('../Images/programming-icon.png');
+    background-size: cover;
+    position: relative;
+    animation: vibrate 0.5s infinite;
+}
+
+@keyframes vibrate {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+}
