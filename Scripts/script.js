@@ -15,6 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             const realisationsContent = document.getElementById('realisations-content');
+            realisationsContent.innerHTML = ""; // Nettoyage avant ajout
+
             data.forEach(realisation => {
                 const realisationElement = document.createElement('div');
                 realisationElement.classList.add('realisation-item');
@@ -24,7 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     <p><strong>Personnes impliquées:</strong> ${realisation.personnes}</p>
                     <p><strong>Technologies:</strong> ${realisation.technologies.join(', ')}</p>
                     <div class="video-container">
-                        <iframe width="560" height="315" src="${realisation.video}" frameborder="0" allowfullscreen></iframe>
+                        <iframe src="${realisation.video}" frameborder="0" allowfullscreen></iframe>
                     </div>
                 `;
                 realisationsContent.appendChild(realisationElement);

@@ -247,12 +247,21 @@ nav {
     }
 }
 
+#realisations-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
 .realisation-item {
-    margin-bottom: 40px; /* Ajoute un espace entre chaque réalisation */
+    width: 80%;
+    max-width: 800px;
+    background-color: #fff;
     padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .video-container {
@@ -260,6 +269,8 @@ nav {
     width: 100%;
     padding-bottom: 56.25%; /* 16:9 ratio */
     height: 0;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .video-container iframe {
