@@ -247,6 +247,15 @@ nav {
     }
 }
 
+#realisations {
+    width: 80%;
+    max-width: 1000px;
+    margin: 50px auto;
+    text-align: center;
+    clear: both; /* Empêche les superpositions */
+}
+
+
 #realisations-content {
     display: flex;
     flex-direction: column;
@@ -257,20 +266,24 @@ nav {
 .realisation-item {
     width: 80%;
     max-width: 800px;
-    background-color: #8B4513;
+    margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #e0d8c3; /* Même couleur que About Me */
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
+}
+
+.realisation-item h3 {
+    font-size: 22px;
+    margin-bottom: 10px;
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* 16:9 ratio */
+    padding-bottom: 56.25%; /* Ratio 16:9 */
     height: 0;
-    border-radius: 8px;
-    overflow: hidden;
 }
 
 .video-container iframe {
@@ -279,4 +292,6 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: 8px;
 }
+

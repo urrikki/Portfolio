@@ -15,8 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(response => response.json())
         .then(data => {
             const realisationsContent = document.getElementById('realisations-content');
-            realisationsContent.innerHTML = ""; // Nettoyage avant ajout
-
+            realisationsContent.innerHTML = ""; // On vide pour éviter des duplications
+            
             data.forEach(realisation => {
                 const realisationElement = document.createElement('div');
                 realisationElement.classList.add('realisation-item');
@@ -34,3 +34,4 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .catch(error => console.error('Erreur lors du chargement des réalisations:', error));
 });
+
