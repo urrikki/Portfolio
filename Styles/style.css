@@ -1,6 +1,6 @@
 body {
-    background-color: #F8E1B7;
-    color: #754E1A;
+    background-color: #ccaf9b;
+    color: #c6c3b3;
     font-family: Arial, sans-serif;
     margin: 0;
     height: 100vh;
@@ -10,7 +10,7 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #CBA35C;
+    background-color: #a06b39;
     padding: 15px 0px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -28,7 +28,7 @@ nav {
 .nav-left {
     font-size: 22px;
     font-weight: bold;
-    color: #754E1A;
+    color: #c6c3b3;
     flex: 0 0 auto;
     padding-left: 1%;
 }
@@ -45,14 +45,14 @@ nav {
 
 .nav-center li a {
     text-decoration: none;
-    color: #754E1A;
+    color: #c6c3b3;
     font-size: 18px;
     font-weight: 500;
     transition: color 0.3s ease;
 }
 
 .nav-center li a:hover {
-    color: #754E1A;
+    color: #c6c3b3;
 }
 
 .nav-right {
@@ -119,7 +119,7 @@ nav {
 .description {
     flex: 1;
     padding: 20px;
-    background-color: #CBA35C;
+    background-color: #a06b39;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     text-align: left;
@@ -147,7 +147,7 @@ nav {
 
 .contact a {
     text-decoration: underline;
-    color: #754E1A;
+    color: #c6c3b3;
 }
 
 .contact a:hover {
@@ -160,7 +160,8 @@ nav {
     margin: 20px auto;
     padding: 20px;
     border-radius: 10px;
-    background-color: #B6CBBD;
+    background-color: #873c1e;
+    color : #312921;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     text-align: center;
 }
