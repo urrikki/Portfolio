@@ -4,20 +4,20 @@
         "duree": "3 mois",
         "personnes": 4,
         "technologies": ["C++", "Unreal Engine"],
-        "video": "https://www.youtube.com/embed/QdBZY2fkU-0"
+        "video": "https://www.youtube.com/embed/a_wNFT4j6qI?si=mA-MpNAA63SrU3SJ"
     },
     {
         "titre": "Projet 2",
         "duree": "2 mois",
         "personnes": 2,
         "technologies": ["C#", "Unity"],
-        "video": "https://www.youtube.com/embed/a_wNFT4j6qI"
+        "video": "https://www.youtube.com/embed/kuMuO1KcaIU?si=cGjgicF9bebJgGQP"
     },
     {
         "titre": "Projet 3",
         "duree": "4 mois",
         "personnes": 5,
         "technologies": ["SFML", "OpenGL"],
-        "video": "https://www.youtube.com/embed/kuMuO1KcaIU"
+        "video": "https://www.youtube.com/embed/QdBZY2fkU-0?si=hDOmAcHCCv5SPE20"
     }
 ]
