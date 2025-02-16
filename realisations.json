@@ -1,23 +1,58 @@
 [
-    {
-        "titre": "Projet 1",
-        "duree": "3 mois",
-        "personnes": 4,
-        "technologies": ["C++", "Unreal Engine"],
-        "video": "https://www.youtube.com/embed/a_wNFT4j6qI?si=mA-MpNAA63SrU3SJ"
-    },
-    {
-        "titre": "Projet 2",
-        "duree": "2 mois",
-        "personnes": 2,
-        "technologies": ["C#", "Unity"],
-        "video": "https://www.youtube.com/embed/kuMuO1KcaIU?si=cGjgicF9bebJgGQP"
-    },
-    {
-        "titre": "Projet 3",
-        "duree": "4 mois",
-        "personnes": 5,
-        "technologies": ["SFML", "OpenGL"],
-        "video": "https://www.youtube.com/embed/QdBZY2fkU-0?si=hDOmAcHCCv5SPE20"
-    }
+  {
+    "titre": "Top down 1vs1",
+    "duree": "2 weeks",
+    "personnes": 3,
+    "technologies": [ "C#", "Unity" ],
+    "video": "https://www.youtube.com/embed/ji_tXIYIwCI?si=Mygpj4PUzsi7V0yq"
+  },
+  {
+    "titre": "Stéganographie",
+    "duree": "1 week",
+    "personnes": 3,
+    "technologies": [ "C++", "WindowsGDI" ],
+    "video": "https://www.youtube.com/embed/fgacG6tincI?si=C590D7CTRTmFwWr3"
+  },
+  {
+    "titre": "Chess",
+    "duree": "1 week",
+    "personnes": 1,
+    "technologies": [ "C++", "SFML" ],
+    "video": "https://www.youtube.com/embed/DXJK6_GMKM0?si=qlWyhKiZ15h93fOb"
+  },
+  {
+    "titre": "FPS",
+    "duree": "1 week",
+    "personnes": 2,
+    "technologies": [ "C#", "Unity" ],
+    "video": "https://www.youtube.com/embed/ONrET2vNSSE?si=J4LYZDjXdLd7SNm8"
+  },
+  {
+    "titre": "TBS",
+    "duree": "1 week",
+    "personnes": 3,
+    "technologies": [ "Shader graph/C#", "Unity" ],
+    "video": "https://www.youtube.com/embed/Sh8y4fixyNI?si=luxRldtYEK5Ak9M_"
+  },
+  {
+    "titre": "Idle game",
+    "duree": "1 week",
+    "personnes": 2,
+    "technologies": [ "C#", "Unity" ],
+    "video": "https://www.youtube.com/embed/sF_vSwqJes0?si=ZgnEqqzbBWpm19TM"
+  },
+  {
+    "titre": "Puzzle Game",
+    "duree": "1 week",
+    "personnes": 2,
+    "technologies": [ "BP", "UE" ],
+    "video": "https://www.youtube.com/embed/Sh8y4fixyNI?si=luxRldtYEK5Ak9M_"
+  },
+  {
+    "titre": "Survival Top Down",
+    "duree": "2 weeks",
+    "personnes": 3,
+    "technologies": [ "C++", "UE" ],
+    "video": "https://www.youtube.com/embed/fvZ-irWqAHA?si=ZyZshJTKOcIXZ9YS"
+  }
 ]
