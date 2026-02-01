@@ -1,33 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
-    initLoadingScreen();
-    initThemeToggle();
+    console.log("🌱 Portfolio growing...");
+    
+    initLoading();
+    initTheme();
     initNavigation();
-    initAnimations();
-    initProjects();
-    initContactForm();
-    initBackToTop();
-    initParticles();
-    initTypewriter();
-    
+    loadProjects();
+    initContact();
     initScrollAnimations();
+    initEasterEggs();
     
-    console.log("%c🎮 Portfolio Loaded Successfully!", "color: #7C3AED; font-size: 18px; font-weight: bold;");
-    console.log("%c👨‍💻 Built with passion by Mattéo Stampanoni", "color: #10B981; font-size: 14px;");
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
 });
 
-function initLoadingScreen() {
+function initLoading() {
     const loadingScreen = document.getElementById('loadingScreen');
     
     setTimeout(() => {
         loadingScreen.style.opacity = '0';
         setTimeout(() => {
             loadingScreen.style.display = 'none';
-            document.body.style.overflow = 'auto';
         }, 500);
-    }, 2000);
+    }, 1500);
 }
 
-function initThemeToggle() {
+function initTheme() {
     const themeToggle = document.getElementById('themeToggle');
     const icon = themeToggle.querySelector('i');
     
@@ -45,103 +41,74 @@ function initThemeToggle() {
             icon.className = 'fas fa-sun';
         } else {
             localStorage.setItem('theme', 'light');
-            icon.className = 'fas fa-moon';
+            icon.className = 'fas fa-leaf';
         }
     });
 }
 
 function initNavigation() {
-    const menuToggle = document.getElementById('menuToggle');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const navLinks = document.querySelectorAll('.nav-link, .mobile-link');
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.querySelectorAll('.nav-link');
     
-    menuToggle.addEventListener('click', () => {
-        mobileMenu.classList.toggle('active');
-        menuToggle.innerHTML = mobileMenu.classList.contains('active') 
-            ? '<i class="fas fa-times"></i>' 
-            : '<i class="fas fa-bars"></i>';
+    navToggle.addEventListener('click', () => {
+        const navMenu = document.querySelector('.nav-links');
+        navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+        navMenu.style.flexDirection = 'column';
+        navMenu.style.position = 'absolute';
+        navMenu.style.top = '100%';
+        navMenu.style.left = '0';
+        navMenu.style.width = '100%';
+        navMenu.style.backgroundColor = 'var(--card-bg)';
+        navMenu.style.padding = '20px';
+        navMenu.style.borderTop = '1px solid var(--border-color)';
     });
-    
-    navLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            mobileMenu.classList.remove('active');
-            menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
-            
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
-        });
-    });
-    
-    const sections = document.querySelectorAll('section');
     
     window.addEventListener('scroll', () => {
-        let current = '';
+        const sections = document.querySelectorAll('section');
+        const scrollPos = window.scrollY + 100;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
             const sectionHeight = section.clientHeight;
+            const sectionId = section.getAttribute('id');
             
-            if (scrollY >= (sectionTop - 200)) {
-                current = section.getAttribute('id');
+            if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
             }
         });
-        
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === `#${current}`) {
-                link.classList.add('active');
+    });
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const navMenu = document.querySelector('.nav-links');
+            if (window.innerWidth <= 768) {
+                navMenu.style.display = 'none';
             }
         });
     });
 }
 
-function initAnimations() {
-    const plant = document.querySelector('.plant');
-    const shadow = document.querySelector('.shadow');
-    
-    if (plant && shadow) {
-        plant.style.animationPlayState = 'running';
-        shadow.style.animationPlayState = 'running';
-    }
-    
-    const programmingIcon = document.querySelector('.programming-icon');
-    if (programmingIcon) {
-        programmingIcon.style.animationPlayState = 'running';
-    }
-    
-    const skillBars = document.querySelectorAll('.level-bar');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const bar = entry.target;
-                bar.style.animationPlayState = 'running';
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    skillBars.forEach(bar => observer.observe(bar));
-}
-
-function initProjects() {
+function loadProjects() {
     const projectsGrid = document.getElementById('projectsGrid');
-    const filterButtons = document.querySelectorAll('.filter-btn');
     
     fetch('realisations.json')
         .then(response => {
-            if (!response.ok) throw new Error('Network response was not ok');
+            if (!response.ok) throw new Error('Could not load projects');
             return response.json();
         })
         .then(projects => {
             renderProjects(projects);
-            setupFilters(projects);
         })
         .catch(error => {
             console.error('Error loading projects:', error);
             projectsGrid.innerHTML = `
-                <div class="error-message">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <p>Unable to load projects. Please check your internet connection.</p>
+                <div class="project-error">
+                    <p><i class="fas fa-exclamation-circle"></i> Projects couldn't load. Check back soon!</p>
                 </div>
             `;
         });
@@ -159,42 +126,34 @@ function initProjects() {
         const card = document.createElement('div');
         card.className = 'project-card';
         
-        let techClass = '';
+        let techIcon = 'fas fa-code';
         if (project.technologies.some(t => t.toLowerCase().includes('unity'))) {
-            techClass = 'unity';
-        } else if (project.technologies.some(t => t.toLowerCase().includes('unreal') || t === 'UE')) {
-            techClass = 'unreal';
+            techIcon = 'fab fa-unity';
+        } else if (project.technologies.some(t => t.toLowerCase().includes('unreal'))) {
+            techIcon = 'fas fa-gamepad';
         } else if (project.technologies.some(t => t.toLowerCase().includes('c++'))) {
-            techClass = 'cpp';
+            techIcon = 'fas fa-plus';
         }
         
-        card.setAttribute('data-tech', techClass);
-        
-        const durationIcon = project.duree.includes('week') ? 'fas fa-calendar-week' : 'fas fa-calendar-day';
-        
-        const peopleIcon = project.personnes === 1 ? 'fas fa-user' : 'fas fa-users';
-        
         card.innerHTML = `
-            <div class="project-media">
-                <div class="video-container">
-                    <iframe 
-                        src="${project.video}" 
-                        title="${project.titre}" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
+            <div class="project-video">
+                <iframe 
+                    src="${project.video}" 
+                    title="${project.titre}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
             </div>
             
             <div class="project-info">
                 <div class="project-header">
                     <h3 class="project-title">${project.titre}</h3>
-                    <span class="project-badge">${project.technologies[0]}</span>
+                    <span class="project-duration">${project.duree}</span>
                 </div>
                 
                 <div class="project-meta">
-                    <span><i class="${durationIcon}"></i> ${project.duree}</span>
-                    <span><i class="${peopleIcon}"></i> ${project.personnes} person${project.personnes > 1 ? 's' : ''}</span>
+                    <span><i class="fas fa-users"></i> ${project.personnes} person${project.personnes > 1 ? 's' : ''}</span>
+                    <span><i class="${techIcon}"></i> School Project</span>
                 </div>
                 
                 <div class="project-tech">
@@ -204,7 +163,7 @@ function initProjects() {
                 </div>
                 
                 <a href="${project.video}" target="_blank" class="project-link">
-                    Watch Demo
+                    Watch Video
                     <i class="fas fa-external-link-alt"></i>
                 </a>
             </div>
@@ -212,176 +171,37 @@ function initProjects() {
         
         return card;
     }
-    
-    function setupFilters(projects) {
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
-                
-                const filter = button.getAttribute('data-filter');
-                filterProjects(filter);
-            });
-        });
-    }
-    
-    function filterProjects(filter) {
-        const projectCards = document.querySelectorAll('.project-card');
-        
-        projectCards.forEach(card => {
-            if (filter === 'all' || card.getAttribute('data-tech') === filter) {
-                card.style.display = 'block';
-                setTimeout(() => {
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, 100);
-            } else {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.display = 'none';
-                }, 300);
-            }
-        });
-    }
 }
 
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-    const toast = document.getElementById('successToast');
+function initContact() {
+    const contactForm = document.getElementById('simpleContactForm');
     
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                subject: document.getElementById('subject').value,
-                message: document.getElementById('message').value,
-                timestamp: new Date().toISOString()
+                name: document.getElementById('simpleName').value,
+                email: document.getElementById('simpleEmail').value,
+                message: document.getElementById('simpleMessage').value
             };
             
-            console.log('Form submitted:', formData);
+            if (!formData.name || !formData.email || !formData.message) {
+                alert('Please fill in all fields');
+                return;
+            }
             
-            toast.classList.add('show');
+            console.log('Message received:', formData);
             
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 3000);
+            alert('Thanks for your message! I\'ll get back to you soon.');
             
             contactForm.reset();
-            
-            console.log(`Message from ${formData.name} (${formData.email}): ${formData.message}`);
         });
     }
-}
-
-function initBackToTop() {
-    const backToTop = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 500) {
-            backToTop.classList.add('visible');
-        } else {
-            backToTop.classList.remove('visible');
-        }
-    });
-    
-    backToTop.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-}
-
-function initParticles() {
-    const particlesContainer = document.getElementById('particles');
-    
-    if (!particlesContainer) return;
-    
-    const particleCount = 30;
-    
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'particle';
-        
-        const size = Math.random() * 4 + 1;
-        const posX = Math.random() * 100;
-        const posY = Math.random() * 100;
-        const delay = Math.random() * 5;
-        const duration = Math.random() * 10 + 10;
-        
-        particle.style.cssText = `
-            width: ${size}px;
-            height: ${size}px;
-            background: var(--primary-color);
-            opacity: ${Math.random() * 0.3 + 0.1};
-            position: absolute;
-            top: ${posY}%;
-            left: ${posX}%;
-            border-radius: 50%;
-            animation: floatParticle ${duration}s linear infinite ${delay}s;
-        `;
-        
-        particlesContainer.appendChild(particle);
-    }
-    
-    const style = document.createElement('style');
-    style.textContent = `
-        @keyframes floatParticle {
-            0% {
-                transform: translate(0, 0) rotate(0deg);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.3;
-            }
-            90% {
-                opacity: 0.3;
-            }
-            100% {
-                transform: translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px) rotate(360deg);
-                opacity: 0;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-}
-
-function initTypewriter() {
-    const codeLines = document.querySelectorAll('.code-line');
-    let currentLine = 0;
-    
-    function typeLine() {
-        if (currentLine < codeLines.length) {
-            const line = codeLines[currentLine];
-            const text = line.textContent;
-            line.textContent = '';
-            line.style.display = 'block';
-            
-            let charIndex = 0;
-            const typeChar = () => {
-                if (charIndex < text.length) {
-                    line.textContent += text.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(typeChar, 30);
-                } else {
-                    currentLine++;
-                    setTimeout(typeLine, 500);
-                }
-            };
-            
-            typeChar();
-        }
-    }
-    
-    setTimeout(typeLine, 1500);
 }
 
 function initScrollAnimations() {
-    const animatedElements = document.querySelectorAll('.skill-card, .project-card, .contact-card, .highlight-item');
+    const animatedElements = document.querySelectorAll('.inspiration-card, .value-item, .project-card');
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -394,9 +214,79 @@ function initScrollAnimations() {
     
     animatedElements.forEach(element => {
         element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
-        element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
         observer.observe(element);
+    });
+}
+
+function initEasterEggs() {
+    const plants = document.querySelectorAll('.plant');
+    let plantClickCount = 0;
+    
+    plants.forEach(plant => {
+        plant.style.cursor = 'pointer';
+        plant.title = 'Click me?';
+        
+        plant.addEventListener('click', () => {
+            plantClickCount++;
+            
+            if (plantClickCount === 5) {
+                const originalFilter = plant.style.filter;
+                plant.style.filter = 'hue-rotate(90deg)';
+                
+                console.log('%c🌿 You found the secret plant! 🌿', 'color: #2E8B57; font-size: 16px;');
+                console.log('%c"Every great oak was once a little nut who held its ground."', 'color: #8B7355; font-style: italic;');
+                
+                setTimeout(() => {
+                    plant.style.filter = originalFilter;
+                }, 2000);
+                
+                setTimeout(() => {
+                    plantClickCount = 0;
+                }, 10000);
+            }
+        });
+    });
+    
+    const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+    let konamiIndex = 0;
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            
+            if (konamiIndex === konamiCode.length) {
+                document.body.classList.toggle('dark-theme');
+                
+                console.log('%c🎮 Konami Code Activated!', 'color: #D4AF37; font-size: 20px; font-weight: bold;');
+                console.log('%cYou unlocked developer mode!', 'color: #2E8B57;');
+                
+                const message = document.createElement('div');
+                message.textContent = '🎮 Konami Code Activated!';
+                message.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: var(--accent-primary);
+                    color: white;
+                    padding: 10px 20px;
+                    border-radius: var(--border-radius);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                `;
+                document.body.appendChild(message);
+                
+                setTimeout(() => {
+                    message.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => message.remove(), 300);
+                }, 3000);
+                
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
     });
 }
 
@@ -423,10 +313,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             });
         }
     });
-});
-
-const currentYear = new Date().getFullYear();
-const yearElements = document.querySelectorAll('.current-year');
-yearElements.forEach(el => {
-    if (el) el.textContent = currentYear;
 });
