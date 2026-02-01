@@ -3,81 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Mattéo Stampanoni | Game Developer</title>
     <link rel="icon" href="Images/PlantLogo.png">
     <link rel="stylesheet" href="Styles/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-content">
+            <div class="loading-logo">
+                <img src="Images/PlantLogo.png" alt="Logo">
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress"></div>
+            </div>
+            <div class="loading-text">Initializing Portfolio...</div>
+        </div>
+    </div>
 
-    <header>
-        <nav>
-            <div class="nav-left">Mattéo Stampanoni</div>
-            <ul class="nav-center">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-            <div class="nav-right">
-                <a href="http://linkedin.com/in/mstampanoni" target="LinkedIn">
-                    <img src="Images/linkedin.svg" alt="LinkedIn">
+    <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="particles-container" id="particles"></div>
+
+    <header class="sticky-header">
+        <nav class="glass-nav">
+            <div class="nav-brand">
+                <div class="logo-container">
+                    <img src="Images/PlantLogo.png" alt="Logo" class="nav-logo">
+                    <span>MS</span>
+                </div>
+                <div class="nav-name">Mattéo Stampanoni</div>
+            </div>
+            
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a></li>
+                    <li><a href="#skills" class="nav-link"><i class="fas fa-code"></i> Skills</a></li>
+                    <li><a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
+                    <li><a href="#contact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-social">
+                <a href="http://linkedin.com/in/mstampanoni" target="_blank" class="social-icon" title="LinkedIn">
+                    <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://github.com/mstampanoni" target="GitHub">
-                    <img src="Images/github.svg" alt="GitHub">
+                <a href="https://github.com/mstampanoni" target="_blank" class="social-icon" title="GitHub">
+                    <i class="fab fa-github"></i>
                 </a>
-                <a href="mailto:mstampanonipro@gmail.com">
-                    <img src="Images/mail.svg" alt="Email">
+                <a href="mailto:mstampanonipro@gmail.com" class="social-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
                 </a>
             </div>
+            
+            <button class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
     </header>
 
-    <div class="welcome-section">
-        <section id="home">
-            <h1 class="shimmer-text">Welcome</h1>
-        </section>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="#home" class="mobile-link active"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about" class="mobile-link"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#skills" class="mobile-link"><i class="fas fa-code"></i> Skills</a></li>
+            <li><a href="#projects" class="mobile-link"><i class="fas fa-project-diagram"></i> Projects</a></li>
+            <li><a href="#contact" class="mobile-link"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
     </div>
 
-    <div class="container">
-        <div class="description">
-            <h1>Hello there!</h1>
-            <p>My name is Mattéo Stampanoni. I'm a Game Developer, specialized in C++/C# programming, working with Unity and Unreal Engine.</p>
-            <p class="contact">Want to reach out? <br> Send me an email at <a href="mailto:mstampanonipro@gmail.com">mstampanonipro@gmail.com</a></p>
-        </div>
-
-        <div class="animation-container">
-            <div class="plant"></div>
-            <div class="shadow"></div>
-        </div>
-    </div>
-
-    <section id="about">
-        <div class="container">
-            <div class="animation-container">
-                <div class="programming-icon" id="programmingIcon"></div>
-            </div>
-
-            <div class="description">
-                <h2>About Me</h2>
-                <div class="about-text" >
-                    <p>I'm a final-year Bachelor's student specializing in Game Development and Real-Time 3D Rendering.</p>
-                    <p>Throughout my academic journey, I have developed strong programming skills in C++ and C#, and gained experience working with Unity and Unreal Engine.I have developed my skills in project management and team collaboration.</p>
-                    <p>I would like to apply my skills in a professional setting and am currently searching for an internship opportunity where I can contribute, learn, and grow.</p>
-                    <p>In my free time, I enjoy playing video games and watching anime. I am always looking for competetive game to challenge myself.</p>
+    <main>
+        <section id="home" class="hero-section">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">Game Developer</div>
+                    <h1 class="hero-title">
+                        <span class="title-line">Crafting Immersive</span>
+                        <span class="title-line">Gaming Experiences</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Specialized in C++/C# programming with Unity & Unreal Engine.<br>
+                        Creating interactive worlds and compelling gameplay.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn-primary">
+                            <span>View My Work</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn-secondary">
+                            <span>Get In Touch</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="hero-visual">
+                    <div class="code-terminal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots">
+                                <span class="dot red"></span>
+                                <span class="dot yellow"></span>
+                                <span class="dot green"></span>
+                            </div>
+                            <div class="terminal-title">game_dev.cpp</div>
+                        </div>
+                        <div class="terminal-body">
+                            <pre><code class="code-animation">
+<span class="code-line"><span class="code-comment">// Creating something amazing</span></span>
+<span class="code-line"><span class="code-keyword">void</span> <span class="code-function">CreateGame</span>() {</span>
+<span class="code-line">    <span class="code-variable">Engine</span> unity = <span class="code-keyword">new</span> <span class="code-class">Unity</span>();</span>
+<span class="code-line">    <span class="code-variable">Engine</span> unreal = <span class="code-keyword">new</span> <span class="code-class">Unreal</span>();</span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="code-variable">Skill</span> csharp = <span class="code-string">"Expert"</span>;</span>
+<span class="code-line">    <span class="code-variable">Skill</span> cplusplus = <span class="code-string">"Advanced"</span>;</span>
+<span class="code-line">    <span class="code-variable">Skill</span> passion = <span class="code-string">"∞"</span>;</span>
+<span class="code-line"></span>
+<span class="code-line">    <span class="code-keyword">return</span> <span class="code-variable">AwesomeGame</span>();</span>
+<span class="code-line">}</span>
+                            </code></pre>
+                        </div>
+                    </div>
+                    
+                    <div class="floating-elements">
+                        <div class="float-element unity">
+                            <i class="fab fa-unity"></i>
+                        </div>
+                        <div class="float-element unreal">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="float-element cpp">
+                            <i class="fas fa-code"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+            
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <p>Scroll to explore</p>
+            </div>
+        </section>
 
-    <section id="projects">
+        <section id="about" class="about-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-subtitle">The Developer Behind The Code</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="about-content">
+                    <div class="about-image">
+                        <div class="image-frame">
+                            <div class="image-placeholder">
+                                <div class="animated-plant">
+                                    <div class="plant"></div>
+                                    <div class="shadow"></div>
+                                </div>
+                            </div>
+                            <div class="image-overlay">
+                                <div class="experience-badge">
+                                    <span class="exp-number">3+</span>
+                                    <span class="exp-text">Years of<br>Experience</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="about-text">
+                        <h3>Building Virtual Worlds with Passion</h3>
+                        <div class="about-description">
+                            <p>I'm a final-year Bachelor's student specializing in <strong>Game Development</strong> and <strong>Real-Time 3D Rendering</strong>. My journey combines technical expertise with creative problem-solving to craft immersive gaming experiences.</p>
+                            
+                            <div class="about-highlights">
+                                <div class="highlight-item">
+                                    <i class="fas fa-graduation-cap"></i>
+                                    <div>
+                                        <h4>Academic Excellence</h4>
+                                        <p>Bachelor's in Game Development with focus on C++/C# programming</p>
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-users"></i>
+                                    <div>
+                                        <h4>Team Collaboration</h4>
+                                        <p>Experienced in Agile development and cross-functional teamwork</p>
+                                    </div>
+                                </div>
+                                <div class="highlight-item">
+                                    <i class="fas fa-rocket"></i>
+                                    <div>
+                                        <h4>Continuous Learning</h4>
+                                        <p>Always exploring new game engines and rendering techniques</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p>When I'm not coding, you'll find me exploring competitive games, analyzing game mechanics, or diving into the latest anime. I believe great games come from the perfect blend of technical skill and player-centric design.</p>
+                        </div>
+                        
+                        <div class="about-actions">
+                            <a href="#contact" class="btn-outline">
+                                <i class="fas fa-handshake"></i>
+                                <span>Let's Work Together</span>
+                            </a>
+                            <a href="Images/resume.pdf" class="btn-download" target="_blank">
+                                <i class="fas fa-download"></i>
+                                <span>Download CV</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="skills-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <p class="section-subtitle">Tools & Technologies I Master</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="skills-container">
+                    <div class="skills-category">
+                        <h3><i class="fas fa-cogs"></i> Game Engines</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <div class="skill-icon unity">
+                                    <i class="fab fa-unity"></i>
+                                </div>
+                                <h4>Unity</h4>
+                                <div class="skill-level">
+                                    <div class="level-bar" data-level="95"></div>
+                                    <span class="level-text">Expert</span>
+                                </div>
+                                <p>C# scripting, Shader Graph, UI/UX, Optimization</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon unreal">
+                                    <i class="fas fa-gamepad"></i>
+                                </div>
+                                <h4>Unreal Engine</h4>
+                                <div class="skill-level">
+                                    <div class="level-bar" data-level="85"></div>
+                                    <span class="level-text">Advanced</span>
+                                </div>
+                                <p>Blueprint, C++, Lighting, Materials</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                        <div class="skills-grid">
+                            <div class="skill-card">
+                                <div class="skill-icon csharp">
+                                    <i class="fas fa-hashtag"></i>
+                                </div>
+                                <h4>C#</h4>
+                                <div class="skill-level">
+                                    <div class="level-bar" data-level="95"></div>
+                                    <span class="level-text">Expert</span>
+                                </div>
+                                <p>Game logic, Systems architecture, OOP</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon cpp">
+                                    <i class="fas fa-plus"></i>
+                                </div>
+                                <h4>C++</h4>
+                                <div class="skill-level">
+                                    <div class="level-bar" data-level="90"></div>
+                                    <span class="level-text">Advanced</span>
+                                </div>
+                                <p>Performance optimization, Memory management</p>
+                            </div>
+                            <div class="skill-card">
+                                <div class="skill-icon other">
+                                    <i class="fas fa-laptop-code"></i>
+                                </div>
+                                <h4>Other Tools</h4>
+                                <div class="skill-level">
+                                    <div class="level-bar" data-level="80"></div>
+                                    <span class="level-text">Proficient</span>
+                                </div>
+                                <p>Git, Visual Studio, Blender, Photoshop</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="skills-category">
+                        <h3><i class="fas fa-star"></i> Specializations</h3>
+                        <div class="specializations">
+                            <span class="specialization-tag">Real-Time 3D Rendering</span>
+                            <span class="specialization-tag">Gameplay Programming</span>
+                            <span class="specialization-tag">AI Development</span>
+                            <span class="specialization-tag">Multiplayer Systems</span>
+                            <span class="specialization-tag">Performance Optimization</span>
+                            <span class="specialization-tag">UI/UX Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-subtitle">Games & Applications I've Built</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="projects-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="unity">Unity</button>
+                    <button class="filter-btn" data-filter="unreal">Unreal</button>
+                    <button class="filter-btn" data-filter="cpp">C++</button>
+                </div>
+                
+                <div class="projects-grid" id="projectsGrid">
+                </div>
+                
+                <div class="github-stats">
+                    <div class="stat-card">
+                        <i class="fab fa-github"></i>
+                        <h3>More Projects</h3>
+                        <p>Explore all my repositories on GitHub</p>
+                        <a href="https://github.com/mstampanoni" target="_blank" class="btn-github">
+                            <i class="fab fa-github"></i>
+                            Visit GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Let's Create Something Amazing Together</p>
+                    <div class="section-line"></div>
+                </div>
+                
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Email</h3>
+                                <a href="mailto:mstampanonipro@gmail.com">mstampanonipro@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Location</h3>
+                                <p>Open to remote & on-site opportunities worldwide</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-card">
+                            <div class="contact-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="contact-details">
+                                <h3>Availability</h3>
+                                <p>Seeking internship opportunities in Game Development</p>
+                            </div>
+                        </div>
+                        
+                        <div class="social-links">
+                            <a href="http://linkedin.com/in/mstampanoni" target="_blank" class="social-btn linkedin">
+                                <i class="fab fa-linkedin"></i>
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/mstampanoni" target="_blank" class="social-btn github">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3>Send a Message</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <input type="text" id="name" placeholder="Your Name" required>
+                                <label for="name"><i class="fas fa-user"></i></label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" id="email" placeholder="Your Email" required>
+                                <label for="email"><i class="fas fa-envelope"></i></label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" id="subject" placeholder="Subject" required>
+                                <label for="subject"><i class="fas fa-tag"></i></label>
+                            </div>
+                            
+                            <div class="form-group">
+                                <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+                                <label for="message"><i class="fas fa-comment"></i></label>
+                            </div>
+                            
+                            <button type="submit" class="btn-submit">
+                                <i class="fas fa-paper-plane"></i>
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
         <div class="container">
-            <div class="description">
-                <h2 style="display: flex; justify-content: center;">Projects</h2>
-                <div id="realisations-content" class="realisations-text"></div>
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo-container">
+                        <img src="Images/PlantLogo.png" alt="Logo">
+                        <span>MS</span>
+                    </div>
+                    <p class="footer-tagline">Crafting the future of gaming, one line of code at a time.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Connect With Me</h4>
+                    <div class="footer-social">
+                        <a href="http://linkedin.com/in/mstampanoni" target="_blank">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/mstampanoni" target="_blank">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="mailto:mstampanonipro@gmail.com">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Mattéo Stampanoni. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart"></i> by a passionate game developer</p>
             </div>
         </div>
-    </section>
-    
-    <script src="Scripts/script.js"></script>
+    </footer>
 
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <div class="toast" id="successToast">
+        <div class="toast-content">
+            <i class="fas fa-check-circle"></i>
+            <span>Message sent successfully!</span>
+        </div>
+    </div>
+
+    <script src="Scripts/script.js"></script>
 </body>
 </html>
